@@ -20,9 +20,6 @@ mv nifi-file-filter-nar-1.0-SNAPSHOT.nar ./nifi/lib/nifi-file-filter-nar-1.0-SNA
 # reformat csv component
 aws s3 cp s3://jasmine-nifi-nar/nifi-reformat-csv-nar-1.0-SNAPSHOT.nar nifi-reformat-csv-nar-1.0-SNAPSHOT.nar
 mv nifi-reformat-csv-nar-1.0-SNAPSHOT.nar ./nifi/lib/nifi-reformat-csv-nar-1.0-SNAPSHOT.nar
-# merger component
-aws s3 cp s3://jasmine-nifi-nar/nifi-merger-nar-1.0-SNAPSHOT.nar nifi-merger-nar-1.0-SNAPSHOT.nar
-mv nifi-merger-nar-1.0-SNAPSHOT.nar ./nifi/lib/nifi-merger-nar-1.0-SNAPSHOT.nar
 
 # INSTALL DOCKER
 sudo amazon-linux-extras install docker -y
