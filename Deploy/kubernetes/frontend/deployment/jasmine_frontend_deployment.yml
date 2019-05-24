@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - image: zed25/jasmine-batch-ui
+        name: jasmine-frontend
+        ports:
+        - containerPort: 80
+          name: frontend-port

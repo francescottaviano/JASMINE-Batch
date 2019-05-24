@@ -1,0 +1,15 @@
+[
+    {
+      "Classification": "hdfs-site",
+      "Properties": {
+        "dfs.replication": "3"
+      }
+    },
+    {
+      "Classification": "core-site",
+      "Properties": {
+        "io.compression.codecs":"org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec",
+        "io.compression.codec.lzo.class":""
+      }
+    }
+]

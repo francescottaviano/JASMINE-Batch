@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: rest
+spec:
+  selector:
+    matchLabels:
+      app: rest
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: rest
+    spec:
+      containers:
+      - image: zed25/jasmine-batch-rest-api
+        name: jasmine-rest
+        ports:
+        - containerPort: 8082
+          name: rest-port

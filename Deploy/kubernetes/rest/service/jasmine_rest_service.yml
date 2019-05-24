@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-cs
+  labels:
+    app: rest
+    name: rest-cs
+spec:
+  type: NodePort
+  ports:
+  - port: 8082
+    nodePort: 32082
+    name: rest-port
+    protocol: TCP
+  selector:
+    app: rest

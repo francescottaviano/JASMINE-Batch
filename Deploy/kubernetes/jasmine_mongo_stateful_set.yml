@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongo
+spec:
+  podManagementPolicy: Parallel
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo
+  serviceName: mongo-cs
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - image: mongo
+        imagePullPolicy: Always
+        name: mongo
+        ports:
+        - containerPort: 27017
+          name: mongo-client
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: 0.5Gi
+          requests:
+            cpu: "0.3"
+            memory: 0.3Gi
+        volumeMounts:
+        - mountPath: /data/db
+          name: mongo-persistent-storage
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: root
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          value: root
+  updateStrategy:
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-persistent-storage
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 10Gi
